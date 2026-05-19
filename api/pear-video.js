@@ -30,9 +30,9 @@ export default function handler(req, res) {
     const id = Date.now()
 
     const basevideo = path.join(process.cwd(), "public/pearvid.mp4")
-    const output = path.join(process.cwd(), `pear-output-${id}.mp4`)
-    const imagePath = path.join(process.cwd(), `pear-img-${id}.png`)
-    const moodPath = path.join(process.cwd(), `pear-mood-${id}.txt`)
+    const output = path.join("/tmp", `pear-output-${id}.mp4`)
+    const imagePath = path.join("/tmp", `pear-img-${id}.png`)
+    const moodPath = path.join("/tmp", `pear-mood-${id}.txt`)
 
     const arialFont = path.join(process.cwd(), "fonts/arial.ttf")
         .replace(/\\/g, "/")
