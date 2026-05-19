@@ -152,8 +152,8 @@ export default function GeneratorModal({ close }) {
 
             const endpoint =
                 selectedPhone === "normal"
-                    ? "/api/generate-video"
-                    : "/api/pear-video"
+                     ? "/api/video-generator"
+                     : "/api/pear-video"
 
             const res = await fetch(endpoint, {
                 method: "POST",
