@@ -1,0 +1,258 @@
+body{
+    margin: 0;
+    font-family: Impact;
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.nav{
+    width: 775px;
+    margin-top: 150px;
+    height: 88px;
+    display: block;
+    cursor: pointer;
+}
+
+.bg-wrapper{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    top:0;
+    left: 0;
+}
+
+.bg-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.center{
+    width: 675px;
+    height: 748px;
+    position:relative;
+}
+
+.body{
+    width: 675px;
+    height: 748px;
+    display: block;
+}
+
+.segments{
+ position:absolute;
+ width: 675px;
+ height: 748px;
+ top: 0;
+ left: 0;
+ cursor: pointer;
+ transition: transform 0.3s ease;
+ z-index: 2;
+}
+
+/*FIXED SEGMENT*/
+.segment{
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.segment:hover{
+ transform: scale(1.02);
+}
+
+.pulse{
+    animation: pulse 2.3s infinite;
+}
+
+.pulse-slow{
+    animation: pulseSlow 2s infinite;
+}
+.pulse-slower {
+    animation: pulseSlower 2.5s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.05);}
+    100%{transform:scale(1);}
+}
+
+@keyframes pulseSlow{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.03);}
+    100%{transform:scale(1);}
+}
+
+@keyframes pulseSlower{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.03);}
+    100%{transform:scale(1);}
+}
+
+/*here ill positiong each segment accordingly*/
+.seg1{
+    top: 288px;
+    left: 1px;
+}
+
+.seg2{
+    top: 288px;
+    left: 105px;
+}
+
+.seg3{
+    top: 288px;
+    right: 380px;
+}
+
+.seg4{
+    top: 288px;
+    left: 294px;
+}
+
+.seg5{
+    top: 288px;
+    left: 386px;
+}
+
+.seg6{
+    top: 288px;
+    right: 100px;
+}
+
+.seg7{
+    bottom: 346px;
+    left: 575px;
+}
+
+.seg8{
+    bottom: 155px;
+    left: 150px;
+}
+
+.seg9{
+    bottom: 462px;
+    left: 8px;
+    height: 280px;
+    width: 152px;
+    z-index: 3;
+}
+
+.pulse-slower{
+    animation: pulseSlower 2.5s infinite;
+}
+
+.overlay{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 50, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.modal{
+    background: linear-gradient(180deg, #ffffff, #f3f7ff);
+    padding: 30px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 4px solid #ff7a00;
+    box-shadow: 
+        0 6px 0 #cc5f00,
+        0 10px 25px rgba(0,0,0,0.2);
+    animation: popIn 0.35s ease;
+    width: 320px;
+    position: relative;
+}
+
+.modal::before{
+    content: "😜";
+    background: linear-gradient(90deg, #ff7a00, #ffcc00);
+    color: white;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 8px;
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    font-size: 12px;
+}
+
+@keyframes popIn{
+    0%{transform: scale(0.8); opacity:0;}
+    100%{transform: scale(1); opacity:1;}
+}
+
+.modal h2{
+    color: #ff4d00;
+    text-align: center;
+    font-size: 22px;
+    text-shadow: 2px 2px 0 #ffd000;
+}
+
+.modal{
+    background: linear-gradient(180deg, #ffffff, #f3f7ff);
+    padding: 30px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 4px solid #ff7a00;
+    box-shadow: 
+        0 6px 0 #cc5f00,
+        0 10px 25px rgba(0,0,0,0.2);
+    animation: popIn 0.35s ease;
+    width: 320px;
+    position: relative;
+
+    margin: auto;
+}
+
+.modal button:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #c94b00;
+}
+
+.modal button:active{
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #c94b00;
+}
+
+.segment:nth-child(8){
+    pointer-events: auto;
+}
+
+.segment:nth-child(1),
+.segment:nth-child(2),
+.segment:nth-child(3),
+.segment:nth-child(4),
+.segment:nth-child(5),
+.segment:nth-child(6),
+.segment:nth-child(7){
+    pointer-events: auto;
+}
+
+.example{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
