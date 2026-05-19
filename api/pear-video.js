@@ -3,7 +3,9 @@ import ffmpegPath from "ffmpeg-static"
 import fs from "fs"
 import path from "path"
 
-ffmpeg.setFfmpegPath(ffmpegPath)
+ffmpeg.setFfmpegPath(
+    ffmpegPath.replace("app.asar", "app.asar.unpacked")
+)
 
 export default function handler(req, res) {
 
