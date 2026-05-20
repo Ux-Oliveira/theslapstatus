@@ -296,6 +296,7 @@ html, body {
     .center {
         transform: scale(0.75);
         transform-origin: top center;
+        right:50%;
 
         display: block;
         width: fit-content;
