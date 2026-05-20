@@ -292,13 +292,14 @@ html, body {
         margin: 10px auto 10px auto;
     }
 
-   .center {
-        transform: scale(0.85);
-        transform-origin: center center;
-        margin: 0 auto;
-        left: auto;
-    }
-
+    .center {
+  transform: scale(0.85);
+  margin: 0 auto;
+  position: relative;
+  left: 0%;
+  transform: translateX(50%) scale(0.85);
+}
+    
 }
 /*smaller phones*/
 
