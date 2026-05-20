@@ -136,27 +136,27 @@ const base64Data = image.replace(/^data:image\/\w+;base64,/, "")
     //name
     "[2:v]rotate=13*PI/180:c=none[namerot]",
 
-    "[v1][namerot]overlay=x=-20:y=75:enable='gte(t\\,0.7)':format=auto[v2]",
+    "[v1][namerot]overlay=x=-20:y=75:format=auto[v2]",
 
     //status
     "[3:v]rotate=13*PI/180:c=none[statusrot]",
 
-    "[v2][statusrot]overlay=x=-20:y=75:enable='gte(t\\,0.7)':format=auto[v3]",
+    "[v2][statusrot]overlay=x=-20:y=75:format=auto[v3]",
 
     //status2
     "[4:v]rotate=13*PI/180:c=none[statusrot2]",
 
-    "[v3][statusrot2]overlay=x=-20:y=75:enable='gte(t\\,0.7)':format=auto[v4]",
+    "[v3][statusrot2]overlay=x=-20:y=75:format=auto[v4]",
 
     //status3
     "[5:v]rotate=13*PI/180:c=none[statusrot3]",
 
-    "[v4][statusrot3]overlay=x=-20:y=75:enable='gte(t\\,0.7)':format=auto[v5]",
+    "[v4][statusrot3]overlay=x=-20:y=75:format=auto[v5]",
 
     //mood
     "[6:v]rotate=13*PI/180:c=none[moodrot]",
 
-    "[v5][moodrot]overlay=x=-20:y=120:enable='gte(t\\,0.7)':format=auto[final]"
+    "[v5][moodrot]overlay=x=-20:y=120:format=auto[final]"
 
         ])
 
