@@ -21,6 +21,7 @@ export default function SlapStatus() {
         <img src="/body.png" className="bg-img" />
        </div>
 
+         <div className="center-wrap">
       <div className="center">
 
         <img src="/slapback.png" className="body"/>
@@ -51,6 +52,7 @@ export default function SlapStatus() {
               />
             ))} 
         </div>
+    </div>
 
      </div>
 
