@@ -153,7 +153,7 @@ const base64Data = image.replace(/^data:image\/\w+;base64,/, "")
 
 "[6:v]rotate=3*PI/180:c=none[moodrot]",
 
-"[v5][moodrot]overlay=x=-20:y=120:enable='gte(t\\,1.54)':format=auto[final]"
+"[v5][moodrot]overlay=x=-20:y=110:enable='gte(t\\,1.54)':format=auto[final]"
 ])
 
         .outputOptions([
