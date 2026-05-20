@@ -290,6 +290,18 @@ html, body {
 @media (max-width: 768px) {
 
 
+       html, body {
+        overflow: hidden;
+        height: 100%;
+        position: fixed;
+        width: 100%;
+        touch-action: none;
+    }
+
+    body {
+    overscroll-behavior: none;
+}
+
        .bg-img {
         object-position: center top;
         transform: scale(1.05);
