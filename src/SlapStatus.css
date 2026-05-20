@@ -316,7 +316,7 @@ html, body {
     margin-top: 10px;
 }
      .stage {
-        transform: scale(0.25);
+        transform: scale(0.75);
         transform-origin: top center;
 
         width: 100%;
