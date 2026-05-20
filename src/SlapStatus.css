@@ -49,10 +49,10 @@ html, body {
     width: 675px;
     height: 748px;
     position: relative;
-    /*margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
 
-    transform-origin: center center;*/
+    transform-origin: center center;
 }
 .center-wrap {
     display: flex;
