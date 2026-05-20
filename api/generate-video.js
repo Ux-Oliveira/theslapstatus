@@ -104,25 +104,25 @@ mood = sanitizeText(mood).slice(0, 29)
     "[1:v]scale=452:154,format=rgba,rotate=12*PI/180:c=none:ow=rotw(12*PI/180):oh=roth(12*PI/180):bilinear=0[img]",
 
     "[base][img]overlay=x=600:y=470:enable='gte(t\\,0.7)'[v1]",
-
-    // -----------------------------
-    // FIXED TEXT PIPELINE (NO VSTACK)
-    // -----------------------------
-
+    
     "[2:v]format=rgba[n1]",
     "[3:v]format=rgba[n2]",
     "[4:v]format=rgba[n3]",
     "[5:v]format=rgba[n4]",
-    "[6:v]format=rgba[n5]",
 
     "[n1][n2]overlay=0:0[tmp1]",
     "[tmp1][n3]overlay=0:0[tmp2]",
-    "[tmp2][n4]overlay=0:0[tmp3]",
-    "[tmp3][n5]overlay=0:0[textstack]",
+    "[tmp2][n4]overlay=0:0[textstack]",
 
     "[textstack]rotate=13*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[textrot]",
 
-    "[v1][textrot]overlay=x=-675:y=-275:format=auto:enable='gte(t\\,0.7)'[final]"
+    "[v1][textrot]overlay=x=-595:y=-255:format=auto:enable='gte(t\\,0.7)'[v2]",
+     //mood
+    "[6:v]format=rgba[mood]",
+
+    "[mood]rotate=13*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[moodrot]",
+
+    "[v2][moodrot]overlay=x=-595:y=-360:format=auto:enable='gte(t\\,0.7)'[final]"
 
 ])
 
