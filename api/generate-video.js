@@ -26,7 +26,7 @@ export default function handler(req, res) {
 
 function sanitizeText(text) {
     return String(text || "")
-        .replace(/[\x00-\x1F\x7F]/g, "") //removing control chars
+        .replace(/[\x00-\x1F\x7F]/g, "")
         .trim()
 }
 
@@ -53,70 +53,41 @@ mood = sanitizeText(mood).slice(0, 29)
     const status3Path = path.join("/tmp", `pear-status3-${id}.png`)
     const moodPath = path.join("/tmp", `pear-mood-${id}.png`)
 
-    //const arialFont = path.join(process.cwd(), "fonts/arial.ttf")
-        //.replace(/\\/g, "/")
-        //.replace(/:/g, "\\:")
-
-    //const emojiFont = path.join(process.cwd(), "fonts/seguiemj.ttf")
-        //.replace(/\\/g, "/")
-        //.replace(/:/g, "\\:")
-
     console.log("API HIT")
     console.log("Video exists?", fs.existsSync(basevideo))
 
     try {
 
         if (!image) {
-    return res.status(400).send("No image provided")
-}
+            return res.status(400).send("No image provided")
+        }
 
-const base64Data = image.replace(/^data:image\/\w+;base64,/, "")
-    fs.writeFileSync(imagePath, base64Data, "base64")
+        const base64Data = image.replace(/^data:image\/\w+;base64,/, "")
+        fs.writeFileSync(imagePath, base64Data, "base64")
 
-    function makeTextImage(text, outPath, fontSize, color, x, y, fontFamily) {
-        const canvas = createCanvas(1080, 1920)
-        const ctx = canvas.getContext("2d")
+        function makeTextImage(text, outPath, fontSize, color, x, y, fontFamily) {
+            const canvas = createCanvas(1080, 1920)
+            const ctx = canvas.getContext("2d")
 
-        ctx.clearRect(0, 0, 1080, 1920)
-        ctx.font = `${fontSize}px ${fontFamily}`
-        ctx.fillStyle = color
-        ctx.textBaseline = "top"
-        ctx.fillText(text, x, y)
+            ctx.clearRect(0, 0, 1080, 1920)
+            ctx.font = `${fontSize}px ${fontFamily}`
+            ctx.fillStyle = color
+            ctx.textBaseline = "top"
+            ctx.fillText(text, x, y)
 
-        fs.writeFileSync(outPath, canvas.toBuffer("image/png"))
-    }
+            fs.writeFileSync(outPath, canvas.toBuffer("image/png"))
+        }
 
-    makeTextImage(name, namePath, 55, "purple", 200, 730, "ArialCustom")
-    makeTextImage(status, statusPath, 55, "black", 135, 880, "ArialCustom")
-    makeTextImage(status2, status2Path, 55, "black", 135, 950, "ArialCustom")
-    makeTextImage(status3, status3Path, 55, "black", 135, 1020, "ArialCustom")
-    makeTextImage(mood, moodPath, 55, "black", 135, 1320, `"ArialCustom","EmojiCustom",sans-serif`)
+        makeTextImage(name, namePath, 55, "purple", 200, 730, "ArialCustom")
+        makeTextImage(status, statusPath, 55, "black", 135, 880, "ArialCustom")
+        makeTextImage(status2, status2Path, 55, "black", 135, 950, "ArialCustom")
+        makeTextImage(status3, status3Path, 55, "black", 135, 1020, "ArialCustom")
+        makeTextImage(mood, moodPath, 55, "black", 135, 1320, `"ArialCustom","EmojiCustom",sans-serif`)
     } catch (err) {
 
         console.error("Image error:", err)
         return res.status(500).send("Image processing failed")
     }
-
-    /*function escapeText(text) {
-
-        return text
-            .replace(/\\/g, "\\\\")
-            .replace(/:/g, "\\:")
-            .replace(/,/g, "\\,")
-            .replace(/\[/g, "\\[")
-            .replace(/\]/g, "\\]")
-            .replace(/'/g, "’")
-            .replace(/\n/g, "\\\\n")
-    }
-
-    const safeName = escapeText(name)
-    const safeStatus = escapeText(status)
-    const safeStatus2 = escapeText(status2)
-    const safeStatus3 = escapeText(status3)
-
-    const safeMoodPath = moodPath
-        .replace(/\\/g, "/")
-        .replace(/:/g, "\\:")*/
 
      ffmpeg(basevideo)
     .input(imagePath)
@@ -126,39 +97,34 @@ const base64Data = image.replace(/^data:image\/\w+;base64,/, "")
     .input(status3Path)
     .input(moodPath)
 
-        .complexFilter([
-"[0:v]scale=1080:1920,setsar=1[base]",
+.complexFilter([
+
+    "[0:v]scale=1080:1920,setsar=1[base]",
 
     "[1:v]scale=452:154,format=rgba,rotate=12*PI/180:c=none:ow=rotw(12*PI/180):oh=roth(12*PI/180):bilinear=0[img]",
 
     "[base][img]overlay=x=600:y=470:enable='gte(t\\,0.7)'[v1]",
 
-    //name
-    "[2:v]rotate=13*PI/180:c=none[namerot]",
+    // -----------------------------
+    // FIXED TEXT PIPELINE (NO VSTACK)
+    // -----------------------------
 
-    "[v1][namerot]overlay=x=-20:y=75:format=auto[v2]",
+    "[2:v]format=rgba[n1]",
+    "[3:v]format=rgba[n2]",
+    "[4:v]format=rgba[n3]",
+    "[5:v]format=rgba[n4]",
+    "[6:v]format=rgba[n5]",
 
-    //status
-    "[3:v]rotate=13*PI/180:c=none[statusrot]",
+    "[n1][n2]overlay=0:0[tmp1]",
+    "[tmp1][n3]overlay=0:0[tmp2]",
+    "[tmp2][n4]overlay=0:0[tmp3]",
+    "[tmp3][n5]overlay=0:0[textstack]",
 
-    "[v2][statusrot]overlay=x=-20:y=75:format=auto[v3]",
+    "[textstack]rotate=13*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[textrot]",
 
-    //status2
-    "[4:v]rotate=13*PI/180:c=none[statusrot2]",
+    "[v1][textrot]overlay=x=-20:y=75:format=auto:enable='gte(t\\,0.7)'[final]"
 
-    "[v3][statusrot2]overlay=x=-20:y=75:format=auto[v4]",
-
-    //status3
-    "[5:v]rotate=13*PI/180:c=none[statusrot3]",
-
-    "[v4][statusrot3]overlay=x=-20:y=75:format=auto[v5]",
-
-    //mood
-    "[6:v]rotate=13*PI/180:c=none[moodrot]",
-
-    "[v5][moodrot]overlay=x=-20:y=120:format=auto[final]"
-
-        ])
+])
 
         .outputOptions([
             "-map [final]",
@@ -177,22 +143,22 @@ const base64Data = image.replace(/^data:image\/\w+;base64,/, "")
 
         .on("error", err => {
 
-    console.error("PEAR FFmpeg ERROR:", err)
+            console.error("PEAR FFmpeg ERROR:", err)
 
-    try {
-        if (fs.existsSync(output)) fs.unlinkSync(output)
-        if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath)
-        if (fs.existsSync(namePath)) fs.unlinkSync(namePath)
-        if (fs.existsSync(statusPath)) fs.unlinkSync(statusPath)
-        if (fs.existsSync(status2Path)) fs.unlinkSync(status2Path)
-        if (fs.existsSync(status3Path)) fs.unlinkSync(status3Path)
-        if (fs.existsSync(moodPath)) fs.unlinkSync(moodPath)
-    } catch {}
+            try {
+                if (fs.existsSync(output)) fs.unlinkSync(output)
+                if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath)
+                if (fs.existsSync(namePath)) fs.unlinkSync(namePath)
+                if (fs.existsSync(statusPath)) fs.unlinkSync(statusPath)
+                if (fs.existsSync(status2Path)) fs.unlinkSync(status2Path)
+                if (fs.existsSync(status3Path)) fs.unlinkSync(status3Path)
+                if (fs.existsSync(moodPath)) fs.unlinkSync(moodPath)
+            } catch {}
 
-    if (!res.headersSent) {
-    res.status(500).send("FFmpeg failed")
-}
-})
+            if (!res.headersSent) {
+                res.status(500).send("FFmpeg failed")
+            }
+        })
 
         .on("end", () => {
 
