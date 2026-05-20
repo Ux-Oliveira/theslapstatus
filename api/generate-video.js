@@ -122,7 +122,7 @@ mood = sanitizeText(mood).slice(0, 29)
 
     "[textstack]rotate=13*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[textrot]",
 
-    "[v1][textrot]overlay=x=-390:y=75:format=auto:enable='gte(t\\,0.7)'[final]"
+    "[v1][textrot]overlay=x=-550:y=375:format=auto:enable='gte(t\\,0.7)'[final]"
 
 ])
 
