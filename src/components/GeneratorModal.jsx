@@ -391,7 +391,7 @@ export default function GeneratorModal({ close }) {
                     <div
                         style={{
                             position: "absolute",
-                            top: "55px",
+                            bottom: "55px",
                             left: "0",
                             width: "100%",
                             background: "#111",
