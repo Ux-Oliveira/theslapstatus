@@ -54,7 +54,11 @@ html, body {
 
     transform-origin: center center;
 }
-
+.center-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .body{
     width: 675px;
     height: 748px;
@@ -294,14 +298,16 @@ html, body {
     }
 
     .center {
-        transform: scale(0.25);
-        transform-origin: top center;
-        right:50%;
+    width: 675px;
+    height: 748px;
 
-        display: block;
-        width: fit-content;
-        margin: 0 auto;
-    }
+    transform: scale(0.25);
+    transform-origin: top center;
+
+    position: relative;
+
+    margin-top: 10px;
+}
 }
 /*smaller phones*/
 
