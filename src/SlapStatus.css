@@ -294,7 +294,7 @@ html, body {
     }
 
     .center {
-        transform: scale(0.75);
+        transform: scale(0.25);
         transform-origin: top center;
         right:50%;
 
