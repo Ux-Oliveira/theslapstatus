@@ -296,7 +296,7 @@ html, body {
   transform: scale(0.85);
   margin: 0 auto;
   position: relative;
-  left: 0%;
+  right: 50%;
   transform: translateX(50%) scale(0.85);
 }
     
