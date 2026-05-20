@@ -294,19 +294,19 @@ html, body {
         object-position: center top;
         transform: scale(1.05);
     }
-    .page {
+      .page {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
         width: 100%;
         min-height: 100vh;
-        padding-top: env(safe-area-inset-top);
+        padding-top: calc(env(safe-area-inset-top) + 20px);
         gap: 0;
     }
 
-    .nav {
-        margin: 10px auto 0 auto;
+        .nav {
+        margin: 10px auto 15px auto;
         width: min(775px, 95vw);
         height: auto;
     }
@@ -322,7 +322,7 @@ html, body {
 
     margin-top: 10px;
 }
-     .stage {
+      .stage {
         transform: scale(0.75);
         transform-origin: top center;
 
@@ -330,6 +330,8 @@ html, body {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        margin-top: 5px;
     }
 }
 /*smaller phones*/
