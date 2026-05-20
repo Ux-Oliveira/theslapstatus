@@ -86,7 +86,7 @@ export default function handler(req, res) {
 
             "[0:v]scale=1080:1920,setsar=1[base]",
 
-            "[1:v]scale=452:154,rotate=12*PI/180:c=none:ow=rotw(12*PI/180):oh=roth(12*PI/180)[img]",
+            "[1:v]scale=452:154,format=rgba,rotate=12*PI/180:c=none:ow=rotw(12*PI/180):oh=roth(12*PI/180):bilinear=0[img]",
 
             "[base][img]overlay=x=600:y=470:enable='gte(t\\,0.7)'[v1]",
 
