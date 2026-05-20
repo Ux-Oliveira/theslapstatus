@@ -109,7 +109,7 @@ mood = sanitizeText(mood).slice(0, 29)
 
     "[name]rotate=10*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[namerot]",
 
-    "[v1][namerot]overlay=x=-622:y=-235:format=auto:enable='gte(t\\,0.7)'[v2]",
+    "[v1][namerot]overlay=x=-622:y=-245:format=auto:enable='gte(t\\,0.7)'[v2]",
     //status stack
     "[3:v]format=rgba[s1]",
     "[4:v]format=rgba[s2]",
@@ -118,13 +118,13 @@ mood = sanitizeText(mood).slice(0, 29)
     "[s1][s2]overlay=0:0[tmp1]",
     "[tmp1][s3]overlay=0:0[textstack]",
 
-    "[textstack]rotate=13*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[textrot]",
+    "[textstack]rotate=10*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[textrot]",
 
     "[v2][textrot]overlay=x=-540:y=-325:format=auto:enable='gte(t\\,0.7)'[v3]",
     //mood
     "[6:v]format=rgba[mood]",
 
-    "[mood]rotate=13*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[moodrot]",
+    "[mood]rotate=10*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[moodrot]",
 
     "[v3][moodrot]overlay=x=-540:y=-360:format=auto:enable='gte(t\\,0.7)'[final]"
 
