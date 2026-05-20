@@ -55,6 +55,7 @@ html, body {
     transform-origin: center center;
 }
 .center-wrap {
+    width:100%;
     display: flex;
     justify-content: center;
 }
