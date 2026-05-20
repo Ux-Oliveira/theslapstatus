@@ -289,6 +289,11 @@ html, body {
 
 @media (max-width: 768px) {
 
+
+       .bg-img {
+        object-position: center top;
+        transform: scale(1.05);
+    }
     .page {
         display: flex;
         flex-direction: column;
