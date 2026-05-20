@@ -107,9 +107,9 @@ mood = sanitizeText(mood).slice(0, 29)
     //name
     "[2:v]format=rgba[name]",
 
-    "[name]rotate=8*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[namerot]",
+    "[name]rotate=10*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[namerot]",
 
-    "[v1][namerot]overlay=x=-630:y=-235:format=auto:enable='gte(t\\,0.7)'[v2]",
+    "[v1][namerot]overlay=x=-622:y=-235:format=auto:enable='gte(t\\,0.7)'[v2]",
     //status stack
     "[3:v]format=rgba[s1]",
     "[4:v]format=rgba[s2]",
