@@ -275,13 +275,38 @@ html, body {
 }
 
 @media (max-width: 768px) {
+
+    .page {
+        justify-content: center;
+        align-items: center;
+        padding-top: 10px;
+    }
+
+    .nav {
+        width: min(775px, 95vw);
+        height: auto;
+        margin: 0 auto 10px auto;
+        display: block;
+    }
+
     .center {
         transform: scale(0.85);
+        transform-origin: center center;
+        margin: 0 auto;
     }
 }
 
+/*smaller phones*/
+
 @media (max-width: 400px) {
+
     .center {
         transform: scale(0.75);
+    }
+
+    .nav {
+        width: 95vw;
+        height: auto;
+        margin-bottom: 8px;
     }
 }
