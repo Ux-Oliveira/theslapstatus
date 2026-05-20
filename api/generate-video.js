@@ -104,25 +104,29 @@ mood = sanitizeText(mood).slice(0, 29)
     "[1:v]scale=452:154,format=rgba,rotate=12*PI/180:c=none:ow=rotw(12*PI/180):oh=roth(12*PI/180):bilinear=0[img]",
 
     "[base][img]overlay=x=600:y=470:enable='gte(t\\,0.7)'[v1]",
-    
-    "[2:v]format=rgba[n1]",
-    "[3:v]format=rgba[n2]",
-    "[4:v]format=rgba[n3]",
-    "[5:v]format=rgba[n4]",
+    //name
+    "[2:v]format=rgba[name]",
 
-    "[n1][n2]overlay=0:0[tmp1]",
-    "[tmp1][n3]overlay=0:0[tmp2]",
-    "[tmp2][n4]overlay=0:0[textstack]",
+    "[name]rotate=13*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[namerot]",
+
+    "[v1][namerot]overlay=x=-565:y=-255:format=auto:enable='gte(t\\,0.7)'[v2]",
+    //status stack
+    "[3:v]format=rgba[s1]",
+    "[4:v]format=rgba[s2]",
+    "[5:v]format=rgba[s3]",
+
+    "[s1][s2]overlay=0:0[tmp1]",
+    "[tmp1][s3]overlay=0:0[textstack]",
 
     "[textstack]rotate=13*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[textrot]",
 
-    "[v1][textrot]overlay=x=-595:y=-255:format=auto:enable='gte(t\\,0.7)'[v2]",
-     //mood
+    "[v2][textrot]overlay=x=-565:y=-295:format=auto:enable='gte(t\\,0.7)'[v3]",
+    //mood
     "[6:v]format=rgba[mood]",
 
     "[mood]rotate=13*PI/180:c=none:ow=rotw(iw):oh=roth(ih)[moodrot]",
 
-    "[v2][moodrot]overlay=x=-595:y=-360:format=auto:enable='gte(t\\,0.7)'[final]"
+    "[v3][moodrot]overlay=x=-565:y=-360:format=auto:enable='gte(t\\,0.7)'[final]"
 
 ])
 
