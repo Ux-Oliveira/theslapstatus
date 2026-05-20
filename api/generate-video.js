@@ -8,13 +8,19 @@ ffmpeg.setFfmpegPath(
     ffmpegPath.replace("app.asar", "app.asar.unpacked")
 )
 
-registerFont(path.join(process.cwd(), "fonts/arial.ttf"), {
-    family: "ArialCustom"
-})
+const arialPath = path.join(process.cwd(), "fonts", "arial.ttf")
+const emojiPath = path.join(process.cwd(), "fonts", "seguiemj.ttf")
 
-registerFont(path.join(process.cwd(), "fonts/seguiemj.ttf"), {
-    family: "EmojiCustom"
-})
+console.log("Arial exists?", fs.existsSync(arialPath))
+console.log("Emoji exists?", fs.existsSync(emojiPath))
+
+if (fs.existsSync(arialPath)) {
+    registerFont(arialPath, { family: "ArialCustom" })
+}
+
+if (fs.existsSync(emojiPath)) {
+    registerFont(emojiPath, { family: "EmojiCustom" })
+}
 
 export default function handler(req, res) {
 
