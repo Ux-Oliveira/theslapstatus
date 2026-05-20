@@ -8,19 +8,13 @@ ffmpeg.setFfmpegPath(
     ffmpegPath.replace("app.asar", "app.asar.unpacked")
 )
 
-const arialPath = path.join(process.cwd(), "fonts", "arial.ttf")
-const emojiPath = path.join(process.cwd(), "fonts", "seguiemj.ttf")
+registerFont(path.join(process.cwd(), "fonts/arial.ttf"), {
+    family: "ArialCustom"
+})
 
-console.log("Arial exists?", fs.existsSync(arialPath))
-console.log("Emoji exists?", fs.existsSync(emojiPath))
-
-if (fs.existsSync(arialPath)) {
-    registerFont(arialPath, { family: "ArialCustom" })
-}
-
-if (fs.existsSync(emojiPath)) {
-    registerFont(emojiPath, { family: "EmojiCustom" })
-}
+registerFont(path.join(process.cwd(), "fonts/seguiemj.ttf"), {
+    family: "EmojiCustom"
+})
 
 export default function handler(req, res) {
 
@@ -50,14 +44,15 @@ mood = sanitizeText(mood).slice(0, 29)
 
     const id = Date.now()
 
-    const basevideo = path.join(process.cwd(), "public/basevid.mp4")
-    const output = path.join("/tmp", `pear-output-${id}.mp4`)
-    const imagePath = path.join("/tmp", `pear-img-${id}.png`)
-    const namePath = path.join("/tmp", `pear-name-${id}.png`)
-    const statusPath = path.join("/tmp", `pear-status-${id}.png`)
-    const status2Path = path.join("/tmp", `pear-status2-${id}.png`)
-    const status3Path = path.join("/tmp", `pear-status3-${id}.png`)
-    const moodPath = path.join("/tmp", `pear-mood-${id}.png`)
+  const basevideo = path.join(process.cwd(), "public/basevid.mp4")
+
+  const output = path.join("/tmp", `output-${id}.mp4`)
+  const imagePath = path.join("/tmp", `img-${id}.png`)
+  const namePath = path.join("/tmp", `name-${id}.png`)
+  const statusPath = path.join("/tmp", `status-${id}.png`)
+  const status2Path = path.join("/tmp", `status2-${id}.png`)
+  const status3Path = path.join("/tmp", `status3-${id}.png`)
+  const moodPath = path.join("/tmp", `mood-${id}.png`)
 
     //const arialFont = path.join(process.cwd(), "fonts/arial.ttf")
         //.replace(/\\/g, "/")
