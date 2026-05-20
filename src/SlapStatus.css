@@ -282,23 +282,27 @@ html, body {
         align-items: center;
         justify-content: flex-start;
         width: 100%;
+        gap: 0px;
         min-height: 100vh;
         padding-top: env(safe-area-inset-top);
     }
 
     .nav {
         width: min(775px, 95vw);
+        margin-bottom: 0px;
         height: auto;
         margin: 10px auto 10px auto;
     }
 
-    .center {
-  transform: scale(0.85);
-  margin-top: -20px;
-  margin: 0 auto;
-  position: relative;
-  right: 50%;
-  transform: translateX(50%) scale(0.65);
+   .center {
+    transform: scale(0.75);
+    transform-origin: center center;
+
+    position: relative;
+    right: 50%;
+    transform: translateX(50%) scale(0.75);
+
+    margin-top: 10px;
 }
     
 }
