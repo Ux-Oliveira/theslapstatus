@@ -133,7 +133,7 @@ const base64Data = image.replace(/^data:image\/\w+;base64,/, "")
 
 "[1:v]scale=385:345,rotate=3*PI/180:c=none:ow=rotw(3*PI/180):oh=roth(3*PI/180)[img]",
 
-"[base][img]overlay=x=400:y=390:enable='gte(t\\,1.54)'[v1]",
+"[base][img]overlay=x=400:y=410:enable='gte(t\\,1.54)'[v1]", //image
 
 "[2:v]rotate=3*PI/180:c=none[namerot]",
 
