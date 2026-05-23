@@ -82,7 +82,7 @@ mood = sanitizeText(mood).slice(0, 29)
         makeTextImage(status, statusPath, 55, "black", 135, 880, "ArialCustom")
         makeTextImage(status2, status2Path, 55, "black", 135, 950, "ArialCustom")
         makeTextImage(status3, status3Path, 55, "black", 135, 1020, "ArialCustom")
-        makeTextImage(mood, moodPath, 55, "black", 135, 1320, `"ArialCustom","EmojiCustom",sans-serif`)
+        makeTextImage(`Mood: ${mood}`, moodPath, 55, "purple", 135, 1320, `"ArialCustom","EmojiCustom",sans-serif`, "bold")
     } catch (err) {
 
         console.error("Image error:", err)
