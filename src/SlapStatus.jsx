@@ -122,30 +122,6 @@ export default function SlapStatus() {
             Rick's a Human on YT!
           </button>
 
-            <button
-            onClick={() =>
-              window.open(
-                "https://vidtogif.vercel.app/",
-                "_blank"
-              )
-            }
-          >
-            Turn the video into a GIF for PIFYI!
-          </button>
-
-            </button>
-
-            <button
-            onClick={() =>
-              window.open(
-                "https://ricksexperiment.vercel.app/",
-                "_blank"
-              )
-            }
-          >
-            My other web projects...
-          </button>
-
           <button
             onClick={() => setShowSupportModal(false)}
           >
