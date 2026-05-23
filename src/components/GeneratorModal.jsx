@@ -45,15 +45,14 @@ export default function GeneratorModal({ close }) {
     setSelectedEmoji(emoji)
 
     const cleanMood = mood.replace(selectedEmoji, "").trim()
-
-    const updatedMood = `${emoji} ${cleanMood}`.trim()
+    const updatedMood = `${cleanMood} ${emoji}`.trim()
 
     if (updatedMood.length <= 29) {
         setMood(updatedMood)
     }
 
     setShowEmojiPicker(false)
- }
+}
 
  function handleNameChange(e) {
 
