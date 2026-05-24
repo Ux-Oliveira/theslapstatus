@@ -107,8 +107,8 @@ export default function SlapStatus() {
             }}
           >
             I'm Rick, I created this page. This video generator uses ffmpeg to add text and images on top a video and generate a new one. Meaning this is done with no AI whatsoever, just basic programming, really!<br /><br />
-            Dude, it took me a long time to figure out how to do this, and I hope you liked it.<br /><br />
-            PLEASE subscribe to my Youtube channel as I intend on making one crazy website after another! I love you for trying this out!
+            PLEASE subscribe to my Youtube channel as I intend on making one crazy website after another! I love you for trying this out!<br />
+            And turn your video into a gif for PIFYI below!
           </h3>
 
           <button
@@ -120,7 +120,18 @@ export default function SlapStatus() {
             }
           >
             Rick's a Human on YT!
-          </button>
+          </button>  
+          <button
+             type="button"
+             onClick={() =>
+             window.open(
+             "https://vidtogif.vercel.app/",
+             "_blank"
+    )
+  }
+>
+  Vid to Gif!!!
+</button>
 
           <button
             onClick={() => setShowSupportModal(false)}
