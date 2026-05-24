@@ -50,7 +50,7 @@ export default function GeneratorModal({ close }) {
     const cleanMood = mood.replace(selectedEmoji, "").trim()
     const updatedMood = `${cleanMood} ${emoji}`.trim()
 
-    if (updatedMood.length <= 29) {
+    if (updatedMood.length <= 24) {
         setMood(updatedMood)
     }
 
@@ -81,7 +81,7 @@ export default function GeneratorModal({ close }) {
 
     let value = e.target.value
 
-    if (value.length > 29) {
+    if (value.length > 24) {
         return
     }
 
