@@ -200,28 +200,32 @@ export default function GeneratorModal({ close }) {
     }
  }
 
-return (
+ return (
 
     <div className="overlay" onClick={close}>
         <div
             className="modal"
             onClick={(e) => e.stopPropagation()}
             style={{
-                maxHeight: "90vh",
+                maxHeight: "92vh",
                 overflowY: "auto",
                 width: "95%",
                 maxWidth: "500px",
-                boxSizing: "border-box"
+                boxSizing: "border-box",
+                paddingTop: "10px",
+                paddingBottom: "10px"
             }}
         >
 
-            <h1>Generate your own TheSlap video status!</h1>
+            <h1 style={{ marginBottom: "6px" }}>
+                Generate your own TheSlap video status!
+            </h1>
 
             <h3
                 style={{
                     fontSize: "14px",
-                    marginTop: "-5px",
-                    marginBottom: "12px",
+                    marginTop: "0px",
+                    marginBottom: "8px",
                     fontWeight: "normal"
                 }}
             >
@@ -233,7 +237,7 @@ return (
                     display: "flex",
                     gap: "20px",
                     justifyContent: "center",
-                    marginBottom: "20px"
+                    marginBottom: "12px"
                 }}
             >
 
@@ -247,8 +251,8 @@ return (
 
                     <div
                         style={{
-                            width: "90px",
-                            height: "90px",
+                            width: "80px",
+                            height: "80px",
                             border:
                                 selectedPhone === "normal"
                                     ? "3px solid purple"
@@ -276,7 +280,7 @@ return (
                     <p
                         style={{
                             fontSize: "12px",
-                            marginTop: "5px"
+                            marginTop: "3px"
                         }}
                     >
                         Normal phone
@@ -294,8 +298,8 @@ return (
 
                     <div
                         style={{
-                            width: "90px",
-                            height: "90px",
+                            width: "80px",
+                            height: "80px",
                             border:
                                 selectedPhone === "pear"
                                     ? "3px solid purple"
@@ -323,7 +327,7 @@ return (
                     <p
                         style={{
                             fontSize: "12px",
-                            marginTop: "5px"
+                            marginTop: "3px"
                         }}
                     >
                         Pear Phone
@@ -375,7 +379,8 @@ return (
             <div
                 style={{
                     position: "relative",
-                    width: "100%"
+                    width: "100%",
+                    marginTop: "4px"
                 }}
             >
 
@@ -450,8 +455,8 @@ return (
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
-                    marginTop: "10px",
-                    marginBottom: "10px",
+                    marginTop: "8px",
+                    marginBottom: "8px",
                     width: "100%"
                 }}
             >
@@ -468,8 +473,8 @@ return (
                 <button
                     onClick={eraseAll}
                     style={{
-                        padding: "5px 10px",
-                        fontSize: "12px",
+                        padding: "4px 8px",
+                        fontSize: "11px",
                         whiteSpace: "nowrap",
                         flexShrink: 0
                     }}
