@@ -1,206 +1,4 @@
-import { useState, useRef } from "react"
-
-export default function GeneratorModal({ close }) {
-
- const [name, setName] = useState("")
- const [status, setStatus] = useState("")
- const [status2, setStatus2] = useState("")
- const [status3, setStatus3] = useState("")
- const [mood, setMood] = useState("")
- const [selectedEmoji, setSelectedEmoji] = useState("")
- const [photo, setPhoto] = useState(null)
- const [loading, setLoading] = useState(false)
- const [selectedPhone, setSelectedPhone] = useState("")
- const [showEmojiPicker, setShowEmojiPicker] = useState(false)
-
- const statusRef1 = useRef(null)
- const statusRef2 = useRef(null)
- const statusRef3 = useRef(null)
-
- const emojis = [
-    "😀","😁","😂","🤣","😃","😄","😅","😊","🙂","😉",
-    "😍","🥰","😘","😎","🤩","😭","😡","😴","🤔","🙄",
-    "😳","🥺","🔥","💀","❤️","💔","✨","⭐","💫","⚡",
-    "👍","👎","👏","🙌","👀","🎵","🎶","🌙","☀️","🌧️",
-    "☁️","🍃","🌸","🖤","💜","💙","💚","💛","🧡","📱",
-    "🎮","🎬","📸","🕶️","💻","🪐","🌎","🛸","🐱","🐶"
- ]
-
- function handleImage(e) {
-
-    const file = e.target.files[0]
-
-    if (!file) return
-
-    console.log("TYPE:", file.type)
-    console.log("NAME:", file.name)
-
-    if (file.size > 20000000) {
-        alert("image too large (max 20MB)")
-        return
-    }
-
-    setPhoto(file)
- }
-
- function addEmoji(emoji) {
-
-    setSelectedEmoji(emoji)
-
-    const cleanMood = mood.replace(selectedEmoji, "").trim()
-    const updatedMood = `${cleanMood} ${emoji}`.trim()
-
-    if (updatedMood.length <= 29) {
-        setMood(updatedMood)
-    }
-
-    setShowEmojiPicker(false)
-}
-
- function eraseAll() {
-    setName("")
-    setStatus("")
-    setStatus2("")
-    setStatus3("")
-    setMood("")
-    setSelectedEmoji("")
- }
-
- function handleNameChange(e) {
-
-    let value = e.target.value
-
-    if (value.length > 25) {
-        return
-    }
-
-    setName(value)
- }
-
- function handleMoodChange(e) {
-
-    let value = e.target.value
-
-    if (value.length > 29) {
-        return
-    }
-
-    setMood(value)
- }
-
- function handleStatus1(e) {
-
-    let value = e.target.value
-
-    if (value.length > 29) {
-        return
-    }
-
-    setStatus(value)
- }
-
- function handleStatus2(e) {
-
-    let value = e.target.value
-
-    if (value.length > 29) {
-        return
-    }
-
-    setStatus2(value)
- }
-
- function handleStatus3(e) {
-
-    let value = e.target.value
-
-    if (value.length > 29) {
-        return
-    }
-
-    setStatus3(value)
- }
-
- async function generate() {
-
-    if (!selectedPhone) {
-        alert("Select a phone type")
-        return
-    }
-
-    if (!photo) {
-        alert("Add an inmage")
-        return
-    }
-
-    if (name.length > 25) {
-        alert("Name can only have 25 characters")
-        return
-    }
-
-    if (status.length > 29 || status2.length > 29 || status3.length > 29) {
-        alert("Each status line can only have 29 characters")
-        return
-    }
-
-    if (mood.length > 29) {
-        alert("Mood can only have 29 characters")
-        return
-    }
-
-    setLoading(true)
-
-    try {
-
-        const reader = new FileReader()
-
-        reader.onloadend = async () => {
-
-            const base64 = reader.result
-
-            const endpoint =
-                selectedPhone === "normal"
-                     ? "/api/generate-video"
-                     : "/api/pear-video"
-
-            const res = await fetch(endpoint, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    name,
-                    status,
-                    status2,
-                    status3,
-                    mood,
-                    image: base64
-                })
-            })
-
-            const videoBlob = await res.blob()
-            const url = URL.createObjectURL(videoBlob)
-
-            const a = document.createElement("a")
-            a.href = url
-            a.download = "slapstatus.mp4"
-            a.click()
-
-            setLoading(false)
-        }
-
-        reader.readAsDataURL(photo)
-
-    } catch (err) {
-
-        console.error(err)
-        alert("Error generating your vid")
-        setLoading(false)
-    }
- }
-
- return (
+return (
 
     <div className="overlay" onClick={close}>
         <div
@@ -438,15 +236,34 @@ export default function GeneratorModal({ close }) {
 
             </div>
 
-            <input
-                type="file"
-                accept="image/*"
-                onChange={handleImage}
-            />
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    marginTop: "12px",
+                    marginBottom: "12px"
+                }}
+            >
+                <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImage}
+                    style={{
+                        flex: 1
+                    }}
+                />
 
-            <button onClick={eraseAll}>
-                Erase All Text
-            </button>
+                <button
+                    onClick={eraseAll}
+                    style={{
+                        padding: "8px 14px",
+                        whiteSpace: "nowrap"
+                    }}
+                >
+                    Erase
+                </button>
+            </div>
 
             <button onClick={generate}>
                 {loading ? "On it..." : "Generate Your Status Now!"}
@@ -458,5 +275,4 @@ export default function GeneratorModal({ close }) {
 
         </div>
     </div>
- )
-}
+)
