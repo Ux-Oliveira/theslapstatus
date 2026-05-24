@@ -54,6 +54,15 @@ export default function GeneratorModal({ close }) {
     setShowEmojiPicker(false)
 }
 
+ function eraseAll() {
+    setName("")
+    setStatus("")
+    setStatus2("")
+    setStatus3("")
+    setMood("")
+    setSelectedEmoji("")
+ }
+
  function handleNameChange(e) {
 
     let value = e.target.value
@@ -434,6 +443,10 @@ export default function GeneratorModal({ close }) {
                 accept="image/*"
                 onChange={handleImage}
             />
+
+            <button onClick={eraseAll}>
+                Erase
+            </button>
 
             <button onClick={generate}>
                 {loading ? "On it..." : "Generate Your Status Now!"}
