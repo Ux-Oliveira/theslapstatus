@@ -251,8 +251,8 @@ export default function GeneratorModal({ close }) {
 
                     <div
                         style={{
-                            width: "80px",
-                            height: "80px",
+                            width: "100px",
+                            height: "100px",
                             border:
                                 selectedPhone === "normal"
                                     ? "3px solid purple"
@@ -298,8 +298,8 @@ export default function GeneratorModal({ close }) {
 
                     <div
                         style={{
-                            width: "80px",
-                            height: "80px",
+                            width: "100px",
+                            height: "100px",
                             border:
                                 selectedPhone === "pear"
                                     ? "3px solid purple"
