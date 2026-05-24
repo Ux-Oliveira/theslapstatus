@@ -206,6 +206,13 @@ return (
         <div
             className="modal"
             onClick={(e) => e.stopPropagation()}
+            style={{
+                maxHeight: "90vh",
+                overflowY: "auto",
+                width: "95%",
+                maxWidth: "500px",
+                boxSizing: "border-box"
+            }}
         >
 
             <h1>Generate your own TheSlap video status!</h1>
@@ -442,9 +449,10 @@ return (
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "10px",
-                    marginTop: "12px",
-                    marginBottom: "12px"
+                    gap: "8px",
+                    marginTop: "10px",
+                    marginBottom: "10px",
+                    width: "100%"
                 }}
             >
                 <input
@@ -452,15 +460,18 @@ return (
                     accept="image/*"
                     onChange={handleImage}
                     style={{
-                        flex: 1
+                        flex: 1,
+                        minWidth: 0
                     }}
                 />
 
                 <button
                     onClick={eraseAll}
                     style={{
-                        padding: "8px 14px",
-                        whiteSpace: "nowrap"
+                        padding: "5px 10px",
+                        fontSize: "12px",
+                        whiteSpace: "nowrap",
+                        flexShrink: 0
                     }}
                 >
                     Erase
