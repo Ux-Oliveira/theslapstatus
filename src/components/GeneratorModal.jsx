@@ -8,7 +8,7 @@ export default function GeneratorModal({ close }) {
  const [status3, setStatus3] = useState("")
  const [mood, setMood] = useState("")
  const [selectedEmoji, setSelectedEmoji] = useState("")
- const [photo, setPhoto] = useState("")
+ const [photo, setPhoto] = useState(null)
  const [loading, setLoading] = useState(false)
  const [selectedPhone, setSelectedPhone] = useState("")
  const [showEmojiPicker, setShowEmojiPicker] = useState(false)
@@ -32,12 +32,15 @@ export default function GeneratorModal({ close }) {
 
     if (!file) return
 
+    console.log("TYPE:", file.type)
+    console.log("NAME:", file.name)
+
     if (file.size > 20000000) {
-        alert("image too large (max 2MB)")
+        alert("image too large (max 20MB)")
         return
     }
 
-    setPhoto(URL.createObjectURL(file))
+    setPhoto(file)
  }
 
  function addEmoji(emoji) {
@@ -149,9 +152,6 @@ export default function GeneratorModal({ close }) {
 
     try {
 
-        const file = await fetch(photo)
-        const blob = await file.blob()
-
         const reader = new FileReader()
 
         reader.onloadend = async () => {
@@ -190,7 +190,7 @@ export default function GeneratorModal({ close }) {
             setLoading(false)
         }
 
-        reader.readAsDataURL(blob)
+        reader.readAsDataURL(photo)
 
     } catch (err) {
 
@@ -445,7 +445,7 @@ export default function GeneratorModal({ close }) {
             />
 
             <button onClick={eraseAll}>
-                Erase
+                Erase All Text
             </button>
 
             <button onClick={generate}>
