@@ -343,7 +343,7 @@ html, body {
 
     position: relative;
 
-    transform: scale(0.25);
+    transform: scale(0.75);
     transform-origin: top center;
 
     margin-left: auto;
